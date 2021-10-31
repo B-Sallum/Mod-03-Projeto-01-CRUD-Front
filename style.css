@@ -1,39 +1,96 @@
 *
 {
+  font-family: 'Courier New', monospace;
   margin: 0;
   padding: 0;
-}  
+}
 body
 {
-  background-color: #3d3d3d;
+  background-color: #5c5c5c;
 }
-.info
+nav
 {
-  color: blue;
+  position: sticky;
+  top: 0px;
 }
-.list
+.navBg
 {
+  background-color: #2b2119;
+  color:            rgb(195, 74, 50);
   display: flex;
-  flex-flow: row wrap;
+  flex-direction: row;
+  font-size: 1.5em;
+  justify-content: center;
+  gap: 20px;
+  height: 1.85em;
+  text-align: center;
+}
+.navBg img
+{
+  height: 40px;
+  width: auto;
+}
+.navShade
+{
+  background-color: #E4B777;
+  height: 0.5vh;
+  width: 100%;
+  box-shadow:
+  0 0 0.3px #D79233,
+  0 0 0.5vh #D79233,
+  0 0 0.7vh #D79233,
+  0 0 0.9vh #D79233,
+  0 0 1.1vh #D79233;
+  -webkit-animation: blink 2s infinite alternate;
+  animation: blink 2s infinite alternate;
+}
+.tapeList
+{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
   margin: 20px;
 }
 .card
 {
-  background-color: rgba(195, 74, 50, 0.5);
-  border-bottom: 10px solid rgb(195, 74, 50);
-  border-radius: 20px;
-  display: flex;
-  flex-flow: column wrap;
+  background-color: #474747;
+  border: 2px solid #791e94;
+  border-radius: 10px;
+  box-shadow: 0 5px 10px rgb(0 0 0 / 0.5);
+  color: rgb(17, 36, 53);
+  display: grid;
   margin: 10px;
-  padding: 10px;
+  text-align: center;
 }
 .card img
 {
-  border-radius: 20px;
-  height: auto;
-  width: 200px;
+  border-radius: 8px 8px 0px 0px;
+  max-width: 100%;
 }
-.title
+.card-info
 {
-  max-width: 200px;
+  display: grid;
+  padding: 10px;
+}
+.year-rating
+{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  font-size: 1em;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+@-webkit-keyframes blink
+{
+  100%
+  {
+    box-shadow: 0 0 1.3vh #D79233;
+  }
+}
+@keyframes blink
+{
+  100%
+  {
+    box-shadow: 0 0 1.3vh #D79233;
+  }
 }
