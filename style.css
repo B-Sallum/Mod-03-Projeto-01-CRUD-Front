@@ -6,7 +6,7 @@
 }
 body
 {
-  background-color: #b8b8b8;
+  background-color: #666666;
 }
 nav
 {
@@ -17,7 +17,7 @@ nav
 }
 .navBg
 {
-  background-color: #2b2119;
+  background-color: #1a140f;
   color: #de6449;
   display: flex;
   flex-direction: row;
@@ -28,7 +28,8 @@ nav
   text-align: center;
   text-shadow:
   0 0 1px #ac3920,
-  0 0 3px #ac3920;
+  0 0 3px #ac3920,
+  0 0 20px #ac3920;
 }
 .navBg img
 {
@@ -88,10 +89,23 @@ nav
       black,
       transparent,
       transparent,
-      transparent,
       black
   );
+  color: ivory;
   height: 100%;
+  position: relative;
+}
+.category
+{
+  position: absolute;
+  top: 5px;
+  left: 10px;
+}
+.name
+{
+  position: absolute;
+  bottom: 5px;
+  left: 10px;
 }
 @-webkit-keyframes blink
 {
