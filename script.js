@@ -7,8 +7,7 @@ const getGamesList = async () => {
   console.log(gamesList);
   gamesList.map((game) => {
     frontList.insertAdjacentHTML('beforeend', `
-    <div class="card">
-      <img src="${game.imgUrl}" alt="">
+    <div class="card" style="background-image: url('${game.imgUrl}'); background-size: cover; background-position: center;">
       <div class="card-info">
         <h3 class="title">${game.name}</h3>
         <div class="year-rating">
