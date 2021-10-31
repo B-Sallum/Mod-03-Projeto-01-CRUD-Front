@@ -6,17 +6,19 @@
 }
 body
 {
-  background-color: #5c5c5c;
+  background-color: #b8b8b8;
 }
 nav
 {
-  position: sticky;
+  position: fixed;
   top: 0px;
+  width: 100%;
+  z-index: 1;
 }
 .navBg
 {
   background-color: #2b2119;
-  color:            rgb(195, 74, 50);
+  color: #de6449;
   display: flex;
   flex-direction: row;
   font-size: 1.5em;
@@ -24,6 +26,9 @@ nav
   gap: 20px;
   height: 1.85em;
   text-align: center;
+  text-shadow:
+  0 0 1px #ac3920,
+  0 0 3px #ac3920;
 }
 .navBg img
 {
@@ -44,6 +49,22 @@ nav
   -webkit-animation: blink 2s infinite alternate;
   animation: blink 2s infinite alternate;
 }
+.form
+{
+  margin: 4em;
+  margin-top: 5em;
+  text-align: center;
+}
+.form input
+{
+  border-radius: 6px;
+  box-shadow: 0 3px 5px #000;
+  font-size: 1.3em;
+  margin: 10px;
+  text-align: center;
+  height: 30px;
+  width: 300px;
+}
 .tapeList
 {
   display: flex;
@@ -52,34 +73,25 @@ nav
   justify-content: center;
   margin: 20px;
 }
-.card
+.card-out
 {
-  border: 2px solid #791e94;
-  border-radius: 10px;
-  box-shadow: 0 5px 10px rgb(0 0 0 / 0.5);
-  height: 12em;
+  box-shadow: 0 5px 7px #000;
+  height: 11.5em;
   width: 16em;
   margin: 10px;
-  text-align: center;
+  position: relative;
 }
-.card img
+.card-in
 {
-  border-radius: 8px 8px 0px 0px;
-}
-.card-info
-{
-  margin: 10px;
-  display: grid;
-  padding: 10px;
-}
-.year-rating
-{
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-between;
-  font-size: 1em;
-  padding-left: 2rem;
-  padding-right: 2rem;
+  background-image:
+    linear-gradient(
+      black,
+      transparent,
+      transparent,
+      transparent,
+      black
+  );
+  height: 100%;
 }
 @-webkit-keyframes blink
 {
