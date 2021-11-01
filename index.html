@@ -21,13 +21,17 @@
       <div class="navShade"></div>
     </nav>
 
-    <section class="form">      
-      <input type="text" name="name" id="name" placeholder="Insert Game Name" required>
-      <input type="number" name="year" id="year" placeholder="Game Year">    
-      <input type="text" name="category" id="category" placeholder="Insert Game Category" required>
-      <input type="number" name="rating" id="rating" placeholder="Rating 1 to 10">     
+    <section class="form">
+      <form onsubmit="submitForm(event)">
+        <input type="text" class="formBox" name="name" id="name" placeholder="Insert Game Name" required>
+        <input type="text" class="formBox" name="category" id="category" placeholder="Insert Game Category" required>
+        <input type="number" class="formBox" name="year" id="year" placeholder="Game Year" required>
+        <input type="url" class="formBox" name="imgUrl" id="imgUrl" placeholder="Insert Image URL" required>
+        <input type="checkbox" name="havePlay" id="havePlay">
+        <input type="number" class="formBox" name="rating" id="rating" placeholder="Rating 1 to 10" disabled>
+        <button type="submit">Add New Game</button>
+      </form>
     </section>
-
     <section class="tapeList" id="tapeList">
     </section>
   </main>

@@ -1,6 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Henny+Penny&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,400;1,700&display=swap');
+
 *
 {
-  font-family: 'Courier New', monospace;
   margin: 0;
   padding: 0;
 }
@@ -10,6 +13,7 @@ body
 }
 nav
 {
+  font-family: 'Henny Penny', cursive;
   position: fixed;
   top: 0px;
   width: 100%;
@@ -24,7 +28,7 @@ nav
   font-size: 1.5em;
   justify-content: center;
   gap: 20px;
-  height: 1.85em;
+  height: 2.5em;
   text-align: center;
   text-shadow:
   0 0 1px #ac3920,
@@ -33,7 +37,7 @@ nav
 }
 .navBg img
 {
-  height: 40px;
+  height:55px;
   width: auto;
 }
 .navShade
@@ -52,11 +56,11 @@ nav
 }
 .form
 {
-  margin: 4em;
-  margin-top: 5em;
+  margin-bottom: 2em;
+  margin-top: 6em;
   text-align: center;
 }
-.form input
+.formBox
 {
   border-radius: 6px;
   box-shadow: 0 3px 5px #000;
@@ -89,23 +93,25 @@ nav
       black,
       transparent,
       transparent,
+      transparent,
       black
   );
   color: ivory;
+  font-family: 'Roboto Condensed', sans-serif;
   height: 100%;
   position: relative;
-}
-.category
-{
-  position: absolute;
-  top: 5px;
-  left: 10px;
 }
 .name
 {
   position: absolute;
   bottom: 5px;
   left: 10px;
+}
+.rating
+{
+  position: absolute;
+  top: 10px;
+  right: 15px;
 }
 @-webkit-keyframes blink
 {
