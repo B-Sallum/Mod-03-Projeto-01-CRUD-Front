@@ -19,6 +19,10 @@ const getGamesList = async () => {
   });
 };
 
+const gamePlay = () => {
+  
+}
+
 getGamesList();
 
 // ${game.id}

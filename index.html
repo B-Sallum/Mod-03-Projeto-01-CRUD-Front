@@ -23,12 +23,21 @@
 
     <section class="form">
       <form onsubmit="submitForm(event)">
-        <input type="text" class="formBox" name="name" id="name" placeholder="Insert Game Name" required>
-        <input type="text" class="formBox" name="category" id="category" placeholder="Insert Game Category" required>
-        <input type="number" class="formBox" name="year" id="year" placeholder="Game Year" required>
-        <input type="url" class="formBox" name="imgUrl" id="imgUrl" placeholder="Insert Image URL" required>
-        <input type="checkbox" name="havePlay" id="havePlay">
-        <input type="number" class="formBox" name="rating" id="rating" placeholder="Rating 1 to 10" disabled>
+        <div class="row">
+          <input type="text" class="formBox" name="name" id="name" placeholder="Insert Game Name" required />
+          <input type="text" class="formBox" name="category" id="category" placeholder="Insert Game Category" required />
+        </div>
+        <div class="row">
+          <input type="number" class="formBox" name="year" id="year" placeholder="Game Year" required />
+          <input type="url" class="formBox" name="imgUrl" id="imgUrl" placeholder="Insert Image URL" required />
+        </div>
+        <div class="row">
+          <label class="switch" for="havePlay">
+            <input type="checkbox" name="havePlay" id="havePlay" />
+            <span class="slider"></span>
+          </label>
+          <input type="number" class="formBox" name="rating" id="rating" placeholder="Rating 1 to 10" disabled />          
+        </div>
         <button type="submit">Add New Game</button>
       </form>
     </section>

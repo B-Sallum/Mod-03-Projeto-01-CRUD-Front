@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Henny+Penny&display=swap');
-
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jura:wght@700&display=swap');
 
 *
 {
@@ -56,19 +56,82 @@ nav
 }
 .form
 {
+  display: grid;
+  grid-template-rows: auto;
   margin-bottom: 2em;
   margin-top: 6em;
   text-align: center;
+}
+.row
+{
+  align-items: center;
 }
 .formBox
 {
   border-radius: 6px;
   box-shadow: 0 3px 5px #000;
+  font-family: 'Jura', sans-serif;
   font-size: 1.3em;
   margin: 10px;
   text-align: center;
   height: 30px;
   width: 300px;
+}
+/* The switch - the box around the slider */
+.switch
+{
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 25px;
+}
+/* Hide default HTML checkbox */
+.switch input
+{
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+/* The slider */
+.slider
+{
+  position: absolute;
+  cursor: pointer;
+  border-radius: 34px;
+  top: 0;
+  left: 0px;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+.slider:before
+{
+  position: absolute;
+  border-radius: 50%;
+  content: "";
+  height: 19px;
+  width: 19px;
+  left: 3px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+input:checked + .slider
+{
+  background-color: #2196F3;
+}
+input:focus + .slider
+{
+  box-shadow: 0 0 1px #2196F3;
+}
+input:checked + .slider:before
+{
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
 }
 .tapeList
 {
