@@ -1,7 +1,12 @@
 
-const API_URL = 'http://localhost:3000/';
+const API_URL = 'http://localhost:3000';
 
 const frontList = document.getElementById('tapeList');
+const inputName = document.getElementById('name');
+const inputCategory = document.getElementById('category');
+const inputYear = document.getElementById('year');
+const inputImgUrl = document.getElementById('imgUrl');
+
 
 const getGamesList = async () => {
 
@@ -26,5 +31,50 @@ const getGamesList = async () => {
   });
 };
 
-getGamesList();
+const submitForm = async (event) => {
+  event.preventDefault();
 
+  const newName = inputName.value;
+  const newCategory = inputCategory.value;
+  const newYear = inputYear.value;
+  const newImgUrl = inputImgUrl.value;
+
+  // POST
+  const request = new Request(
+    `${API_URL}/new`,
+    {
+      method: "POST",
+      body: JSON.stringify({
+        name: newName,
+        category: newCategory,
+        year: newYear,
+        imgUrl: newImgUrl,
+        havePlay: "checked",
+        rating: 10
+      }),
+      headers: new Headers({
+        "Content-Type": "application/json"
+      }),
+    }
+  );
+
+  const response = await fetch(request);
+  
+  if (response.status === 409) {
+    const json = await response.json();
+    alert(json.message);
+    return;
+  }
+
+
+  frontList.innerHTML = "";
+  
+  inputName.value = "";
+  inputCategory.value = "";
+  inputYear.value = "";
+  inputImgUrl.value = ""; 
+
+  getGamesList();
+}
+
+getGamesList();
