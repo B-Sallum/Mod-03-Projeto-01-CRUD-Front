@@ -9,6 +9,9 @@ const inputImgUrl = document.getElementById('imgUrl');
 const inputHavePlay = document.getElementById('havePlay');
 const inputRating = document.getElementById('rating');
 
+let isEdit = false;
+let editingGame;
+
 const getGamesList = async () => {
 
   const response = await fetch(API_URL);
@@ -27,8 +30,9 @@ const getGamesList = async () => {
           <input type="checkbox" name="havePlay" id="havePlay" ${game.havePlay} />
           <input type="number" class="formBox" name="rating" id="rating" value="${game.rating}" />          
         </div>
-        <div>
-          <button class="deleteGame" onclick="deleteGame('${game.id}', '${game.name}')">X</h2>
+        <div class="innerButtons">
+          <button class="innerButton" id="editGame" onclick="editGame('${game.id}', '${game.name}')">Edit</h2>
+          <button class="innerButton" onclick="deleteGame('${game.id}', '${game.name}')">X</h2>
         </div>
       </div>
     </div>
@@ -45,9 +49,11 @@ const submitForm = async (event) => {
   const newImgUrl = inputImgUrl.value;
 
   const request = new Request(
-    `${API_URL}/new`,
+
+    isEdit ? `${API_URL}/edit/${editingGame}` : `${API_URL}/new`,
+
     {
-      method: "POST",
+      method: isEdit ? "PUT" : "POST",
       body: JSON.stringify({
         name: newName,
         category: newCategory,

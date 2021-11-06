@@ -141,22 +141,33 @@ nav
   top: 10px;
   right: 15px;
 }
-.deleteGame
+.innerButtons
+{
+  position: absolute;
+  top: 0px;
+  right: 0px;
+}
+.innerButton
 {
   background-color: #b33819;
   cursor: pointer;
   font-family: 'Jura', sans-serif;
-  font-size: 1.3em;
-  position: absolute;
-  top: 0px;
-  right: 0px;
-  text-align: center;
+  font-size: 1em;
   height: 30px;
   width: 30px;
 }
-.deleteGame:hover
+.innerButton:hover
 {
   background-color: #e04e29;
+}
+#editGame
+{
+  background-color: #FF9000;
+  width: 40px;
+}
+#editGame:hover
+{
+  background-color: #FFB85C;
 }
 @-webkit-keyframes blink
 {
