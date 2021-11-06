@@ -1,3 +1,13 @@
+// document.getElementById("MyElement").classList.add('MyClass');
+
+// document.getElementById("MyElement").classList.remove('MyClass');
+
+// if ( document.getElementById("MyElement").classList.contains('MyClass') )
+
+// document.getElementById("MyElement").classList.toggle('MyClass');
+
+
+
 
 const API_URL = 'http://localhost:3000';
 
@@ -20,26 +30,48 @@ const getGamesList = async () => {
 
   frontList.innerHTML = "";
 
-  gamesList.map((game) => {
+  gamesList.reverse();
+
+  gamesList.map((game) => {    
     frontList.insertAdjacentHTML('beforeend', `
     <div class="card-out" style="background-image: url('${game.imgUrl}'); background-size: cover; background-position: center;">
       <div class="card-in">
         <div class="category"><h3>${game.category}</h3></h4>
         <div class="year"><h3>${game.year}</h3></div>
         <div class="name"><h3>${game.name}</h3></div>
-        <div class="row">
-          <input type="checkbox" name="havePlay" id="havePlay" ${game.havePlay} />
+        <div class="innerRating">
+          <input type="checkbox" name="havePlay" id="havePlay" onclick="favGame('${game.id}', '${game.havePlay}')" ${game.havePlay ? "checked" : "" } />
           <input type="number" class="formBox" name="rating" id="rating" value="${game.rating}" />          
         </div>
         <div class="innerButtons">
-          <button class="innerButton" onclick="editGame('${game.id}', '${game.name}', '${game.category}', '${game.year}', '${game.imgUrl}')">Edit</h2>
-          <button class="innerButton" id="deleteGame" onclick="deleteGame('${game.id}', '${game.name}')">X</h2>
+          <button class="editButton" id="editGame" onclick="editGame('${game.id}', '${game.name}', '${game.category}', '${game.year}', '${game.imgUrl}')">Edit</h2>
+          <button class="editButton" id="deleteGame" onclick="deleteGame('${game.id}', '${game.name}')">X</h2>
         </div>
       </div>
     </div>
     `);
   });
 };
+
+const favGame = async (id, haveYouPlay) => {
+
+  const request = new Request(
+
+    `${API_URL}/edit/${id}`,
+
+    {
+      method: "PUT",
+      body: JSON.stringify({
+        havePlay: haveYouPlay ? false : true,
+      }),
+      headers: new Headers({
+        "Content-Type": "application/json"
+      }),
+    }
+  )
+
+  const response = await fetch(request);
+}
 
 const submitForm = async (event) => {
   event.preventDefault();
@@ -83,7 +115,7 @@ const submitForm = async (event) => {
   inputImgUrl.value = ""; 
   isEdit = false;
   editingGame = undefined;
-  inputButton.style.backgroundColor = "#008f47";
+  inputButton.className = "submitButton";
   inputButton.value = "Add New Game";
 
 
@@ -112,14 +144,12 @@ const editGame = async (id, name, category, year, imgUrl) => {
   isEdit = true;
   editingGame = id;
   inputButton.value = "Edit Game";
-  inputButton.style.backgroundColor = "#FF9000";
+  inputButton.className = "editButton";
   inputName.value = name;
   inputCategory.value = category;
   inputYear.value = year;
   inputImgUrl.value = imgUrl;
 
 }
-
-
 
 getGamesList();
