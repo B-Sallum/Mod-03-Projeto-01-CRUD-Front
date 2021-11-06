@@ -8,6 +8,7 @@ const inputYear = document.getElementById('year');
 const inputImgUrl = document.getElementById('imgUrl');
 const inputHavePlay = document.getElementById('havePlay');
 const inputRating = document.getElementById('rating');
+const inputButton = document.getElementById('submitButton');
 
 let isEdit = false;
 let editingGame;
@@ -31,8 +32,8 @@ const getGamesList = async () => {
           <input type="number" class="formBox" name="rating" id="rating" value="${game.rating}" />          
         </div>
         <div class="innerButtons">
-          <button class="innerButton" id="editGame" onclick="editGame('${game.id}', '${game.name}')">Edit</h2>
-          <button class="innerButton" onclick="deleteGame('${game.id}', '${game.name}')">X</h2>
+          <button class="innerButton" onclick="editGame('${game.id}', '${game.name}', '${game.category}', '${game.year}', '${game.imgUrl}')">Edit</h2>
+          <button class="innerButton" id="deleteGame" onclick="deleteGame('${game.id}', '${game.name}')">X</h2>
         </div>
       </div>
     </div>
@@ -80,6 +81,11 @@ const submitForm = async (event) => {
   inputCategory.value = "";
   inputYear.value = "";
   inputImgUrl.value = ""; 
+  isEdit = false;
+  editingGame = undefined;
+  inputButton.style.backgroundColor = "#008f47";
+  inputButton.value = "Add New Game";
+
 
   getGamesList();
 }
@@ -100,6 +106,19 @@ const deleteGame = async (gameId, gameName) => {
     getGamesList();
   }
 };
+
+const editGame = async (id, name, category, year, imgUrl) => {
+
+  isEdit = true;
+  editingGame = id;
+  inputButton.value = "Edit Game";
+  inputButton.style.backgroundColor = "#FF9000";
+  inputName.value = name;
+  inputCategory.value = category;
+  inputYear.value = year;
+  inputImgUrl.value = imgUrl;
+
+}
 
 
 

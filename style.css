@@ -149,25 +149,24 @@ nav
 }
 .innerButton
 {
-  background-color: #b33819;
+  background-color: #FF9000;
   cursor: pointer;
   font-family: 'Jura', sans-serif;
   font-size: 1em;
   height: 30px;
-  width: 30px;
 }
 .innerButton:hover
 {
-  background-color: #e04e29;
-}
-#editGame
-{
-  background-color: #FF9000;
-  width: 40px;
-}
-#editGame:hover
-{
   background-color: #FFB85C;
+}
+#deleteGame
+{
+  background-color: #b33819;
+  width: 30px;
+}
+#deleteGame:hover
+{
+  background-color: #e04e29;
 }
 @-webkit-keyframes blink
 {
