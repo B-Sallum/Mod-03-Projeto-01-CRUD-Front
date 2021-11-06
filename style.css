@@ -77,6 +77,23 @@ nav
   height: 30px;
   width: 300px;
 }
+.submitButton
+{
+  border-radius: 6px;
+  background-color: #008f47;
+  box-shadow: 0 3px 5px #000;
+  cursor: pointer;
+  font-family: 'Jura', sans-serif;
+  font-size: 1.3em;
+  margin: 10px;
+  text-align: center;
+  height: 30px;
+  width: 300px;
+}
+.submitButton:hover
+{
+  background-color: #00ca65;
+}
 #rating
 {
   width: 30px;
@@ -115,14 +132,31 @@ nav
 .name
 {
   position: absolute;
-  bottom: 5px;
-  left: 10px;
+  bottom: 0px;
+  left: 0px;
 }
 .rating
 {
   position: absolute;
   top: 10px;
   right: 15px;
+}
+.deleteGame
+{
+  background-color: #b33819;
+  cursor: pointer;
+  font-family: 'Jura', sans-serif;
+  font-size: 1.3em;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  text-align: center;
+  height: 30px;
+  width: 30px;
+}
+.deleteGame:hover
+{
+  background-color: #e04e29;
 }
 @-webkit-keyframes blink
 {

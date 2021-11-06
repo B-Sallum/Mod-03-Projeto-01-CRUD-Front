@@ -28,7 +28,7 @@ const getGamesList = async () => {
           <input type="number" class="formBox" name="rating" id="rating" value="${game.rating}" />          
         </div>
         <div>
-          <button onclick="deleteGame('${game.id}', '${game.name}')">X</h2>
+          <button class="deleteGame" onclick="deleteGame('${game.id}', '${game.name}')">X</h2>
         </div>
       </div>
     </div>
