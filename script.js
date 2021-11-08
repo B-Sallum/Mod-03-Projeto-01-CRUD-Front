@@ -6,9 +6,6 @@
 
 // document.getElementById("MyElement").classList.toggle('MyClass');
 
-
-
-
 const API_URL = 'http://localhost:3000';
 
 const frontList = document.getElementById('tapeList');
@@ -22,6 +19,7 @@ const inputButton = document.getElementById('submitButton');
 
 let isEdit = false;
 let editingGame;
+let newStatus;
 
 const getGamesList = async () => {
 
@@ -40,8 +38,12 @@ const getGamesList = async () => {
         <div class="year"><h3>${game.year}</h3></div>
         <div class="name"><h3>${game.name}</h3></div>
         <div class="innerRating">
-          <input type="checkbox" name="havePlay" id="havePlay" onclick="favGame('${game.id}', '${game.havePlay}')" ${game.havePlay ? "checked" : "" } />
-          <input type="number" class="formBox" name="rating" id="rating" value="${game.rating}" />          
+          <img src="./img/fav${game.havePlay}.png" name="havePlay" id="havePlay" onclick="faGame('${game.id}', '${game.havePlay}')" />
+          <select name="rating" id="rating">
+      
+              <option value="1">1</option>
+         
+          </select>
         </div>
         <div class="innerButtons">
           <button class="editButton" id="editGame" onclick="editGame('${game.id}', '${game.name}', '${game.category}', '${game.year}', '${game.imgUrl}')">Edit</h2>
@@ -52,26 +54,6 @@ const getGamesList = async () => {
     `);
   });
 };
-
-const favGame = async (id, haveYouPlay) => {
-
-  const request = new Request(
-
-    `${API_URL}/edit/${id}`,
-
-    {
-      method: "PUT",
-      body: JSON.stringify({
-        havePlay: haveYouPlay ? false : true,
-      }),
-      headers: new Headers({
-        "Content-Type": "application/json"
-      }),
-    }
-  )
-
-  const response = await fetch(request);
-}
 
 const submitForm = async (event) => {
   event.preventDefault();
@@ -92,8 +74,6 @@ const submitForm = async (event) => {
         category: newCategory,
         year: newYear,
         imgUrl: newImgUrl,
-        havePlay: false,
-        rating: 0
       }),
       headers: new Headers({
         "Content-Type": "application/json"
@@ -151,5 +131,32 @@ const editGame = async (id, name, category, year, imgUrl) => {
   inputImgUrl.value = imgUrl;
 
 }
+
+const faGame = async (id, favoriteGame) => {
+
+  if (favoriteGame == 'false') {
+    newStatus = true;
+  } else {
+    newStatus = false;
+  }
+
+  const request = new Request(
+
+    `${API_URL}/edit/${id}`,
+
+    {
+      method: "PUT",
+      body: JSON.stringify({
+        havePlay: newStatus,
+      }),
+      headers: new Headers({
+        "Content-Type": "application/json",
+      }),
+    }
+  )
+
+  await fetch(request);
+  getGamesList();
+};
 
 getGamesList();
