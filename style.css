@@ -136,14 +136,10 @@ nav
   left: 0px;
   margin: 10px;
 }
-.rating
-{
-  position: absolute;
-  top: 10px;
-  right: 15px;
-}
 .innerRating
 {
+  display: flex;
+  gap: 10px;
   position: absolute;
   bottom: 10px;
   right: 10px;
@@ -151,19 +147,18 @@ nav
 #rating
 {
   margin: 0px;
-  height: 25px;
   width: 40px;
 }
 #havePlay
 {
   cursor: pointer;
-  height: 25px;
+  height: 33px;
 }
 .innerButtons
 {
   position: absolute;
-  top: 0px;
-  right: 0px;
+  top: 5px;
+  right: 5px;
 }
 .editButton
 {

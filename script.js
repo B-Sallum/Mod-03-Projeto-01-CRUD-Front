@@ -16,6 +16,7 @@ const inputImgUrl = document.getElementById('imgUrl');
 const inputHavePlay = document.getElementById('havePlay');
 const inputRating = document.getElementById('rating');
 const inputButton = document.getElementById('submitButton');
+const innerRating = document.getElementById('innerRating');
 
 let isEdit = false;
 let editingGame;
@@ -39,11 +40,7 @@ const getGamesList = async () => {
         <div class="name"><h3>${game.name}</h3></div>
         <div class="innerRating">
           <img src="./img/fav${game.havePlay}.png" name="havePlay" id="havePlay" onclick="faGame('${game.id}', '${game.havePlay}')" />
-          <select name="rating" id="rating">
-      
-              <option value="1">1</option>
-         
-          </select>
+          <input type="number" min="0" max="10" class="formBox" id="rating" value="${game.rating}">
         </div>
         <div class="innerButtons">
           <button class="editButton" id="editGame" onclick="editGame('${game.id}', '${game.name}', '${game.category}', '${game.year}', '${game.imgUrl}')">Edit</h2>
