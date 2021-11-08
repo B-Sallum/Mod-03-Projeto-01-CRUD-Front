@@ -14,9 +14,7 @@ const inputCategory = document.getElementById('category');
 const inputYear = document.getElementById('year');
 const inputImgUrl = document.getElementById('imgUrl');
 const inputHavePlay = document.getElementById('havePlay');
-const inputRating = document.getElementById('rating');
 const inputButton = document.getElementById('submitButton');
-const innerRating = document.getElementById('innerRating');
 
 let isEdit = false;
 let editingGame;
@@ -39,8 +37,8 @@ const getGamesList = async () => {
         <div class="year"><h3>${game.year}</h3></div>
         <div class="name"><h3>${game.name}</h3></div>
         <div class="innerRating">
-          <img src="./img/fav${game.havePlay}.png" name="havePlay" id="havePlay" onclick="faGame('${game.id}', '${game.havePlay}')" />
-          <input type="number" min="0" max="10" class="formBox" id="rating" value="${game.rating}">
+          <img src="./img/fav${game.havePlay}.png" name="havePlay" id="havePlay" onclick="favGame('${game.id}', '${game.havePlay}')" />
+          <input type="number" min="0" max="10" class="formBox" id="rating" onmouseout="rateGame(${game.id})" value="${game.rating}">
         </div>
         <div class="innerButtons">
           <button class="editButton" id="editGame" onclick="editGame('${game.id}', '${game.name}', '${game.category}', '${game.year}', '${game.imgUrl}')">Edit</h2>
@@ -129,7 +127,7 @@ const editGame = async (id, name, category, year, imgUrl) => {
 
 }
 
-const faGame = async (id, favoriteGame) => {
+const favGame = async (id, favoriteGame) => {
 
   if (favoriteGame == 'false') {
     newStatus = true;
@@ -145,6 +143,29 @@ const faGame = async (id, favoriteGame) => {
       method: "PUT",
       body: JSON.stringify({
         havePlay: newStatus,
+      }),
+      headers: new Headers({
+        "Content-Type": "application/json",
+      }),
+    }
+  )
+
+  await fetch(request);
+  getGamesList();
+};
+
+const rateGame = async (id) => {
+
+  const inputRating = document.getElementById('rating');
+
+  const request = new Request(
+
+    `${API_URL}/edit/${id}`,
+
+    {
+      method: "PUT",
+      body: JSON.stringify({
+        rating: inputRating.value,
       }),
       headers: new Headers({
         "Content-Type": "application/json",
