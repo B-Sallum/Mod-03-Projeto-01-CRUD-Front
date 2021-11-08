@@ -38,7 +38,7 @@ const getGamesList = async () => {
         <div class="name"><h3>${game.name}</h3></div>
         <div class="innerRating">
           <img src="./img/fav${game.havePlay}.png" name="havePlay" id="havePlay" onclick="favGame('${game.id}', '${game.havePlay}')" />
-          <input type="number" min="0" max="10" class="formBox" id="rating" onmouseout="rateGame(${game.id})" value="${game.rating}">
+          <input type="number" min="0" max="10" class="formBox" id="rating" value="${game.rating}" onmouseout="rateGame(${game.id}, value)">
         </div>
         <div class="innerButtons">
           <button class="editButton" id="editGame" onclick="editGame('${game.id}', '${game.name}', '${game.category}', '${game.year}', '${game.imgUrl}')">Edit</h2>
@@ -154,9 +154,7 @@ const favGame = async (id, favoriteGame) => {
   getGamesList();
 };
 
-const rateGame = async (id) => {
-
-  const inputRating = document.getElementById('rating');
+const rateGame = async (id, value) => {
 
   const request = new Request(
 
@@ -165,7 +163,7 @@ const rateGame = async (id) => {
     {
       method: "PUT",
       body: JSON.stringify({
-        rating: inputRating.value,
+        rating: value,
       }),
       headers: new Headers({
         "Content-Type": "application/json",
