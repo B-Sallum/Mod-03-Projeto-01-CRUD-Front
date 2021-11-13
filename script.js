@@ -6,7 +6,7 @@
 
 // document.getElementById("MyElement").classList.toggle('MyClass');
 
-const API_URL = 'http://localhost:3000';
+const API_URL = 'http://localhost:3002';
 
 const frontList = document.getElementById('tapeList');
 const inputName = document.getElementById('name');
